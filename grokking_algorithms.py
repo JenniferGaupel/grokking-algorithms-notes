@@ -152,33 +152,98 @@ def main():
     ## easily get stuck in the cycle and every time you run the cycle you just add weight)
     ## (Bellman-Ford algorithm works on neg-weight graphs but that's out of the book's scope)
 
-    graph = {}
+    # graph = {}
     
-    graph["start"] = {}
-    graph["start"]["a"] = 6
-    graph["start"]["b"] = 2
+    # graph["start"] = {}
+    # graph["start"]["a"] = 6
+    # graph["start"]["b"] = 2
 
-    graph["a"] = {}
-    graph["a"]["fin"] = 1
+    # graph["a"] = {}
+    # graph["a"]["fin"] = 1
     
-    graph["b"] = {}
-    graph["b"]["a"] = 3
-    graph["b"]["fin"] = 5
+    # graph["b"] = {}
+    # graph["b"]["a"] = 3
+    # graph["b"]["fin"] = 5
 
-    graph["fin"] = {}
+    # graph["fin"] = {}
 
-    infinity = float("inf")
-    costs = {}
-    costs["a"] = 6
-    costs["b"] = 2
-    costs["fin"] = infinity
+    # infinity = float("inf")
+    # costs = {}
+    # costs["a"] = 6
+    # costs["b"] = 2
+    # costs["fin"] = infinity
 
-    parents = {}
-    parents["a"] = "start"
-    parents["b"] = "start"
-    parents["fin"] = None
+    # parents = {}
+    # parents["a"] = "start"
+    # parents["b"] = "start"
+    # parents["fin"] = None
 
-    processed = []
+    # processed = []
+
+    # def find_lowest_cost_node(costs):
+    #     lowest_cost = float("inf")
+    #     lowest_cost_node = None
+    #     for node in costs:
+    #         cost = costs[node]
+    #         if cost< lowest_cost and node not in processed:
+    #             lowest_cost = cost
+    #             lowest_cost_node = node
+    #     return lowest_cost_node
+
+    # node = find_lowest_cost_node(costs)
+
+    # while node is not None:
+    #     cost = costs[node]
+    #     neighbors = graph[node]
+    #     for n in neighbors.keys():
+    #         new_cost = cost + neighbors[n]
+    #         if costs[n] > new_cost:
+    #             costs[n] = new_cost
+    #             parents[n] = node
+    #     processed.append[node]
+    #     node = find_lowest_cost_node(costs)
+
+    ### Dynamic Programming
+    ## It uses a grid! Start with smaller sub-problems and you can use those later to solve the larger problems. 
+    ## It progressively builds on your estimate/subproblems so you can continue to add items
+    ## It only works on descrete subproblems - there can't be subproblems with dependencies on each other
+    ## When you get to your final max calculation in the grid, if you have some leftover, you can use the previously
+    ## calculated maxes for smaller parts of the grid to math what is the best final grid max
+    ## This was done using the knapsack problem - a thief has a 4 pound knapsack and three items to choose to steal to get the
+    ## highest value of itesm - a 1 pound guitar worth $1500, a 4 pound stereo worth $3000, a 3 pound laptop worth $2000
+    ## Dynamic Programming is a concept there is no one single formula. Just know it involves a grid and you build off subproblems
+    ## With this you either take all of an "item" or don't take the item (you can't decide on half a cell phone.)
+    ## You'd use a greedy algorithm to solve something like that
+
+    ### KNN (K-Nearest neighbors)
+    ## Good for classifying    
+    ## You don't know what something is. Look at it's nearest neighbors and use that to classify it
+    ## Fearure Extraction - how you find the items are similar/neighbors. The features you compare to find similar items.
+    ## You want to make sure you pick good features that have meaning!
+    ## These items are on a graph. Use the Pythagorean formula to find distances between graph points (will have to google it)
+    ## Ex - you have a fruit that is between grapefruit and orange on a graph from small & orange to big & reddish
+    ## Between it's 3 nearest neighbors, 2 are orange and 1 is grapefruit, so it's probably an orange
+    ## This is also like a Netflix movie recommendation system - based on this movie, others who watched that movie watched this movi
+    ## 2 parts to KNN:
+    ## Classification - categorization into a group
+    ## Regression - predicting a response (like a number) - so once you find the K nearest neighbors, you can math out the 
+    ## "responses" or make an average of those nearest neigbors - for example, guessing what someone will rate a movie based on their 
+    ## past movie ratings
+    ## For the book we are using the distance formula (pythagorean formula) but in some cases it's better to use cosine similarity
+
+    ### Trees
+
+    ### Fourier Transorm - check out better explained site
+    
+    ### SHA - Secure Hash Algortihm - hashes string to string. Different hash for every string. SHA is a family of algorithms.
+    ## Use newer versions SHA if you want to store, bcrypt is the current standard for password-hashing
+    ## SHA is locality insensitive - dog and dot create some completely different hashes so you can't compare hashes to guess the original string
+    ## Simhash and others are locality sensitive. That's useful if you just want to use a hash for comparison purposes but not security
+    
+    ###Diffie-Hellman & RSA - you have a public key that anyone can use to encrypt and send a message. ONLY YOU have the private key to decrypt the message
+    ## Makes for very strong encryption
+
+    print("These are Jen's notes!")
 
 if __name__ == '__main__':
     main()
